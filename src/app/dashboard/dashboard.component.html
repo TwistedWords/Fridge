@@ -1,0 +1,54 @@
+<div class="products-toolbar">
+
+  <mat-form-field appearance="outline" style="padding-top: 22px; padding-left: 10px;">
+    <mat-label>Filter</mat-label>
+    <input matInput type="text" placeholder="Filter" [(ngModel)]="flt">
+  </mat-form-field>
+
+  <span class="spacer"></span>
+
+
+  <button mat-raised-button color="accent" class="toolar-bttn" (click)="openAdd()">Add Product</button>
+</div>
+
+<div class="container">
+
+<div *ngFor="let prod of displayedProducts">
+  <div class="product"  *ngIf="prod.foodName.toLowerCase( ).includes(flt.toLowerCase( ))"
+    [ngClass]="checkExpired(prod.expirationDate) ? 'expired-product' : '' ">
+    <ng-container >
+      <div class="prod-details">
+
+
+        <div class="product-img">
+          <img class="image" [src]="prod.imageURL">
+        </div>
+
+        <div class="product-info" [ngClass]="checkExpired(prod.expirationDate) ? 'expired-text' : '' ">
+          <h2 class="prod-name">{{ prod.foodName}}</h2>
+        </div>
+
+      </div>
+
+      <div class="expiration-date" [ngClass]="checkExpired(prod.expirationDate) ? 'expired' : '' ">
+        <h3> {{ checkExpired(prod.expirationDate) ? 'Expired' : 'Expires on: ' + (prod.expirationDate | date: "d-MM-y")
+          }}
+        </h3>
+      </div>
+
+      <span class="spacer"></span>
+
+      <div class="bottom-bttn">
+        <button mat-icon-button (click)="openEdit(prod)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button (click)="deleteFood(prod.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </ng-container>
+  </div>
+
+</div>
+</div>

@@ -1,0 +1,52 @@
+<form [formGroup]="foodForm" (ngSubmit)="onSubmit()" class="container-form">
+  <h1> Food Form</h1>
+  <div class="container">
+    <div class="container-row">
+      <mat-form-field appearance="outline">
+        <mat-label>Food Name</mat-label>
+        <input matInput placeholder="Ex. Pizza" formControlName="foodName">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Food Type</mat-label>
+        <mat-select formControlName="foodType">
+          <mat-option value="Fruits">Fruits</mat-option>
+          <mat-option value="Vegetables">Vegetables</mat-option>
+          <mat-option value="Grains">Grains</mat-option>
+          <mat-option value="Protein foods">Protein foods</mat-option>
+          <mat-option value="Dairy products">Dairy products</mat-option>
+          <mat-option value="Beverages">Beverages</mat-option>
+          <mat-option value="Snacks">Snacks</mat-option>
+          <mat-option value="Desserts">Desserts</mat-option>
+          <mat-option value="Condiments">Condiments</mat-option>
+          <mat-option value="Other">Other</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="container-row">
+      <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Expiration date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="expirationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </div>
+
+    <div class="container-row">
+      <input id="file-input" type="file" #fileInput hidden (change)="upload($event)" accept=".jpg, .jpeg, .png">
+      <input id="file-input" hidden formControlName="imageURL" >
+      <button mat-stroked-button type="button" class="mat-icon-button" for="file-input" (click)="fileInput.click()">
+        <mat-icon>attach_file</mat-icon>
+        Photo Upload
+      </button>
+    </div>
+
+    <div class="bottom-buttons">
+      <button mat-stroked-button type="submit">{{data ? 'Update': 'Save'}}</button>
+      <button mat-stroked-button mat-dialog-close type="button">Close</button>
+    </div>
+  </div>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</form>
+

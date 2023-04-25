@@ -1,0 +1,25 @@
+<h1>ToBuy List</h1>
+<div class="container">
+
+  <div id="checklist">
+    <ng-container *ngFor="let line of lines; let i = index" >
+      <input  value="{{i}}" name="r" type="checkbox" id="0+{{i}}">
+      <label for="0+{{i}}"> <span>{{line}}    <span (click)="remove(i)"><mat-icon class="del-icon">delete_outline</mat-icon></span>  </span>     </label> 
+    </ng-container>
+
+  </div>
+</div>
+
+<div class="add-button">
+  <div class="add-border">
+    <div class="add-tab" *ngIf="addDiv" >
+      <div class="input-group">
+        <input type="text" class="input" [(ngModel)]="newLine" autocomplete="off">
+        <button mat-button (click)="saveLine()"> Add</button>
+      </div>
+    </div>
+  </div>
+  <button mat-fab color="warn" (click)="openAdd()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,59 @@
+.container {
+    max-width: 600px;
+    max-height: 500px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+    background-color: #263238;
+    padding: 1rem 1rem 0 1rem;
+}
+
+h1 {
+    text-decoration:solid;
+    color: white;
+}
+
+mat-form-field {
+    width: 248px;
+}
+
+.container-form {
+    background-color: #263238;
+    padding-top: 10px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.container-row {
+    
+    background-color: #263238;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    
+}
+
+.bottom-buttons{
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    gap: 1rem;
+}
+
+
+@media only screen and (max-width: 600px) {
+
+    .container-row {
+        flex-direction: column;
+        gap: 0px;
+    }
+
+}
+
